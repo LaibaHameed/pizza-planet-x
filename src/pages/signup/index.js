@@ -12,7 +12,7 @@ const Signup = () => {
   }
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="bg-white shadow-slate-500 w-full max-w-xl px-20 py-14 m-4 shadow-xl">
+      <div className="bg-white shadow-slate-500 w-full max-w-xl px-20 py-14 sm:px-4 sm:py-4 m-4 shadow-xl">
         {/* Logo */}
         <h2 className="text-3xl font-bold text-center text-zinc-700 mb-6 uppercase tracking-wider">
           Welcome Back
