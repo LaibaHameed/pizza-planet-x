@@ -1,0 +1,166 @@
+[
+  {
+    "id": "0",
+    "name": "MARGHERITA",
+    "category": "Pizza",
+    "foodType": "Non-Veg",
+    "price": { "regular": "69", "medium": "159", "large": "219" },
+    "description": "A hugely popular margherita, with a deliciously tangy single cheese topping",
+    "img": "/pizzas/pizza-6.png"
+  },
+    {
+        "id": "1",
+        "name": "Cheese Pizza",
+        "category": "Pizza",
+        "foodType": "Veg",
+        "price": { "small": "69", "medium": "159", "large": "219" },
+        "description": "A simple yet delicious margherita pizza with a tangy, cheesy topping.",
+        "img": "/pizzas/pizza-3.png"
+      },
+    {
+      "id": "2",
+      "name": "Buffalo Pizza",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "A spicy and tangy pizza topped with buffalo chicken, onions, and mozzarella cheese for a bold flavor experience.",
+      "img": "/pizzas/pizza-4.png"
+    },
+    {
+      "id": "3",
+      "name": "BBQ Chicken Pizza",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "Smoky BBQ sauce with tender chicken, grilled mushrooms, black olives, and onions, topped with a BBQ glaze.",
+      "img": "/pizzas/pizza-5.png"
+    },
+    {
+      "id": "4",
+      "name": "Meat Pizza",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "A meat lover's delight, with BBQ chicken, pepperoni, grilled mushrooms, and a layer of melted cheese.",
+      "img": "/pizzas/pizza-2.png"
+    },
+    {
+      "id": "5",
+      "name": "Hawaiian Pizza",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "A tropical twist with pineapple chunks, barbecue chicken, mushrooms, and green onions.",
+      "img": "/pizzas/pizza-7.png"
+    },
+    {
+      "id": "6",
+      "name": "Veggie Pizza",
+      "category": "Pizza",
+      "foodType": "Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "An overload of fresh vegetables including crisp capsicum, mushrooms, and tomatoes, served on a cheesy base.",
+      "img": "/pizzas/pizza-8.png"
+    },
+    {
+      "id": "7",
+      "name": "Chicken Pepperoni Pizza",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "The classic American favorite with savory chicken pepperoni and extra cheese.",
+      "img": "/pizzas/pizza-1.png"
+    },
+    
+    {
+      "id": "8",
+      "name": "Chicken Supreme",
+      "category": "Pizza",
+      "foodType": "Non-Veg",
+      "price": { "small": "69", "medium": "159", "large": "219" },
+      "description": "Loaded with double pepper barbecue chicken, peri-peri chicken, and grilled chicken rashers for a supreme flavor.",
+      "img": "/pizzas/pizza-6.png"
+    },
+    {
+      "id": "9",
+      "name": "Normal Soda",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A refreshing soda to complement any meal.",
+      "img": "/pizzas/soda.png"
+    },
+    {
+      "id": "10",
+      "name": "Light Soda",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A light, refreshing soda for a crisp and subtle taste.",
+      "img": "/pizzas/lightSoda.png"
+    },
+    {
+      "id": "11",
+      "name": "Lemon Tea",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A zesty lemon tea, perfect for quenching your thirst.",
+      "img": "/pizzas/lemonTea.png"
+    },
+    {
+      "id": "12",
+      "name": "Milkshake",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A creamy milkshake, perfect to pair with your meal.",
+      "img": "/pizzas/milkshak.png"
+    },
+    {
+      "id": "13",
+      "name": "Strawberry Pie",
+      "category": "Sides & Beverages",
+      "foodType": "Non-Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A sweet and tangy strawberry pie with a flaky crust.",
+      "img": "/pizzas/strawberry-pie.png"
+    },
+    {
+      "id": "14",
+      "name": "Special Cupcake",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A delightful cupcake with a sweet and creamy filling.",
+      "img": "/pizzas/cupcake.png"
+    },
+    {
+      "id": "15",
+      "name": "Coconut Icecream",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40"},
+      "description": "A rich coconut ice cream with a tropical flavor.",
+      "img": "/pizzas/icecream.png"
+    },
+    {
+      "id": "16",
+      "name": "Berries Icecream",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40"},
+      "description": "A creamy ice cream bursting with the sweet and tangy flavor of mixed berries.",
+      "img": "/pizzas/icecream2.png"
+    },
+    {
+      "id": "17",
+      "name": "Berries Icecream",
+      "category": "Sides & Beverages",
+      "foodType": "Veg",
+      "price": { "double": "72", "single": "40" },
+      "description": "A creamy ice cream bursting with the sweet and tangy flavor of mixed berries.",
+      "img": "/pizzas/icecream2.png"
+    }
+  ]
+  

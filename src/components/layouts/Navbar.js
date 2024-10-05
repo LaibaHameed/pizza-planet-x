@@ -1,18 +1,40 @@
-import React, { useState } from 'react'; 
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LucideLogIn, MenuIcon, ShoppingCart, User, UserPlus, UserPlus2, UserPlusIcon, X } from 'lucide-react';
+import { LucideLogIn, MenuIcon, ShoppingCart, User,  UserPlusIcon, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const cartItems = 3; // Example number of cart items
 
+  // Refs for the dropdowns
+  const profileRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileOpen(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
   return (
-    <nav className="bg-red-500 p-4 sticky top-0 py-9">
+    <nav className="bg-red-500 p-4 sticky top-0 py-9 z-10">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white text-2xl font-bold uppercase">
+        <div className="pr-4">
           <Link href="/">
             <Image src={"/logo.svg"} alt="logo" width={250} height={250} />
           </Link>
@@ -29,8 +51,8 @@ const Navbar = () => {
         {/* Profile, Cart, and Mobile Menu Icons */}
         <div className="flex items-center space-x-6">
           {/* Profile Icon */}
-          <div className="relative">
-            <button onClick={() => setProfileOpen(!profileOpen)} className="text-white hover:text-black focus:outline-none">
+          <div className="relative" ref={profileRef}>
+          <button onClick={() => setProfileOpen(!profileOpen)} className="text-white hover:text-black focus:outline-none">
               <User className="w-6 h-6" />
             </button>
             {profileOpen && (
@@ -56,7 +78,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden" ref={menuRef}>
             <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
               {/* Toggle between Menu and Cross icon */}
               {isOpen ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
