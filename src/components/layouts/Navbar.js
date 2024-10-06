@@ -1,12 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { CartContext } from '@/utils/contextReducer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LucideLogIn, MenuIcon, ShoppingCart, User,  UserPlusIcon, X } from 'lucide-react';
 
 const Navbar = () => {
+  const { state } = useContext(CartContext);
+  const cartItems = state ? state.length : 0;
+
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const cartItems = 3; // Example number of cart items
 
   // Refs for the dropdowns
   const profileRef = useRef(null);

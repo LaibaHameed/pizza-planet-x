@@ -1,8 +1,10 @@
+import { CartContext } from '@/utils/contextReducer';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 const Card = ({ fooddata }) => {
-    const { img, name, description, price } = fooddata;
+    const { state, dispatch } = useContext(CartContext);
+    const { id, img, name, description, price } = fooddata;
     const priceOptions = Object.keys(price); // Get price options based on the keys of price object
 
     const [size, setSize] = useState(priceOptions[1]); // Initialize size to the first option
@@ -12,16 +14,39 @@ const Card = ({ fooddata }) => {
 
     // Calculate price based on the selected size
     const selectedPrice = price[size];
+    let finalPrice = parseFloat(selectedPrice * quantity).toFixed(2);
 
-    const handleAddToCart = () => {
-        // Logic to add the selected pizza to the cart
-        console.log(`Added ${quantity} x ${size} ${name} to the cart for $${(selectedPrice * quantity).toFixed(2)}.`);
+    const handleAddToCart = async() => {
+        const updateItem = await state.find((item)=>item.tempId === id+size)
+        if(updateItem){
+            dispatch({
+                type: "UPDATE",
+                id: id,
+                tempId : id+size,
+                price: finalPrice,
+                qty: quantity
+            });
+        }
+        if(!updateItem){
+            dispatch({
+                type: "ADD",
+                id: id,
+                tempId : id+size,
+                name: name,
+                price: finalPrice,
+                qty: quantity,
+                priceOptions: size,
+                img: img
+            });
+        }
+        
     };
+    
 
     return (
-        <div className="shadow-lg border-2 border-red-500 p-4 max-w-xs mx-auto my-4">
+        <div className="shadow-sm border-2  p-4 max-w-xs mx-auto my-4">
             <div className="relative bg-red-500 rounded-full overflow-hidden">
-                <Image src={img} alt={name} className="w-full object-cover transition-transform duration-700 hover:scale-105 hover:rotate-12" width={300} height={200} />
+                <Image src={img} alt="pizza image" className="w-full object-cover transition-transform duration-700 hover:scale-105 hover:rotate-12" width={300} height={200} />
             </div>
             <h2 className="text-lg font-bold mt-2 text-slate-950">{name}</h2>
             <p className="text-gray-700 mt-1 text-sm">{description}</p>
@@ -54,11 +79,11 @@ const Card = ({ fooddata }) => {
 
             <div className="flex justify-between items-center mt-4">
                 <span className="text-xl font-bold text-slate-950">
-                    ${parseFloat(selectedPrice * quantity).toFixed(2)} {/* Display total price */}
+                    ${finalPrice} {/* Display total price */}
                 </span>
                 <button
                     onClick={handleAddToCart}
-                    className="bg-red-600 font-semibold text-white px-4 py-3 hover:bg-red-700 transition duration-200">
+                    className="bg-slate-950 font-semibold text-white px-4 py-3 hover:bg-yellow-500 hover:text-zinc-950 transition duration-200">
                     Add to Cart
                 </button>
             </div>

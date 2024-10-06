@@ -15,13 +15,13 @@ const HeroSection = () => {
                     <button className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-slate-950 hover:text-white">
                         Order Online
                     </button>
-                    <button className="bg-slate-950 text-white font-semibold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
+                    <button className="bg-slate-950 text-white font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
                         Book a Table
                     </button>
                 </div>
             </div>
 
-            <div className="md:w-1/2 mt-8 md:mt-0 animate-fadeInRight">
+            <div className="md:w-1/2 mt-8 md:mt-0 object-cover animate-fadeInRight transition-transform duration-700 hover:scale-105 hover:rotate-12">
                 <Image
                     src="/main.png" 
                     alt="Delicious Pizza"
