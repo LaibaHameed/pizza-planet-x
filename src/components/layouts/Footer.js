@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, FacebookIcon, Instagram, InstagramIcon, Twitter, TwitterIcon, Youtube, YoutubeIcon } from 'lucide-react';
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -41,7 +41,7 @@ const Footer = () => {
         {/* Section 2: Follow us on Instagram and Images */}
         <div className="text-white flex flex-col justify-center">
           {/* Heading */}
-          <h2 className="text-2xl font-bold uppercase mb-4 m-auto">Follow us on Instagram</h2>
+          <h2 className="text-2xl font-bold uppercase mb-4 m-auto mx-3 text-center">Follow us on Instagram</h2>
           {/* Images Grid */}
           <div className="flex justify-center">
             <div className="flex flex-col items-center">
@@ -84,8 +84,8 @@ const Footer = () => {
 {/* <hr className="text-yellow-50" /> */}
 <div className="h-px bg-slate-500 my-8"></div>
       {/* Copyright */}
-      <div className="mt-6 text-center text-white text-lg tracking-wider">
-        &copy; Copyright - Pizzaplanet X | Designed by BRIX Templates - Powered by Webflow
+      <div className="mt-6 text-center text-white text-lg tracking-wider text-wrap mx-6">
+        &copy; Copyright - Pizzaplanet X | Designed by Laiba Hameed 
       </div>
     </footer>
   );

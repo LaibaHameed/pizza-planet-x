@@ -1,6 +1,7 @@
 // components/menu/Menu.js
 import Card from "@/components/home/Card";
 import cardData from "../../store/CardData.json";
+import { useState } from "react";
 
 export default function Menu() {
     const categories = new Set();
@@ -17,6 +18,7 @@ export default function Menu() {
 
     const categoryArray = [...categories]; // Convert Set to Array
 
+    const [typeFilter, setTypeFilter] = useState(false);
     return (
         <>
             <div className="flex flex-col justify-center content-center gap-4 p-4">
@@ -30,6 +32,29 @@ export default function Menu() {
                     mauris tortor cras est eu accumsan mauris.
                 </p>
             </div>
+            <div className="flex justify-center md:justify-start md:gap-6 gap-2 my-10 ml-10">
+                <button
+                    onClick={() => setTypeFilter(false)}
+                    className={`font-bold tracking-wider uppercase p-2 sm:py-4 sm:px-6 md:text-sm transition-colors duration-300 ${!typeFilter ? "bg-slate-950 text-white" : "text-slate-950 bg-inherit border-2"
+                        }`}
+                >
+                    ALL
+                </button>
+                <button
+                    onClick={() => setTypeFilter("Veg")}
+                    className={`font-bold tracking-wider uppercase p-2 sm:py-4 sm:px-6 md:text-sm transition-colors duration-300 ${typeFilter === "Veg" ? "bg-slate-950 text-white" : "bg-yellow-500 text-zinc-950"
+                        }`}
+                >
+                    Veg
+                </button>
+                <button
+                    onClick={() => setTypeFilter("Non-Veg")}
+                    className={`font-bold tracking-wider uppercase p-2 sm:py-4 sm:px-6 md:text-sm transition-colors duration-300 ${typeFilter === "Non-Veg" ? "bg-slate-950 text-white" : "bg-red-600 text-white"
+                        }`}
+                >
+                    Non-Veg
+                </button>
+            </div>
 
             <div className="flex flex-col justify-center gap-4 p-4">
                 {categoryArray.map((category) => (
@@ -40,8 +65,9 @@ export default function Menu() {
                         <hr className="mb-4" />
                         <div className="flex flex-wrap gap-4 justify-center">
                             {fooddata
-                                .filter((item) => item.category === category)
-                                .map((data) => (
+                                ?.filter((item) => item.category === category)
+                                ?.filter((item) => typeFilter ? typeFilter === item.foodType : item)
+                                ?.map((data) => (
                                     <Card key={data.name} fooddata={data} />
                                 ))}
                         </div>

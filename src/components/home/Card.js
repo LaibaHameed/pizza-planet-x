@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react';
 
 const Card = ({ fooddata }) => {
     const { state, dispatch } = useContext(CartContext);
+    
     const { id, img, name, description, price } = fooddata;
     const priceOptions = Object.keys(price); // Get price options based on the keys of price object
 

@@ -2,33 +2,26 @@ import { useContext } from "react";
 import { CartContext } from "@/utils/contextReducer";
 import Image from 'next/image';
 import { Delete, Trash2 } from "lucide-react";
+import { useRouter } from 'next/router';
 
 const Cart = () => {
   const { state, dispatch } = useContext(CartContext);
   const getUnitPrice = (item) => item.price / item.qty;
 
-  // Handle quantity changes
-  const handleQuantityChange = (id, action) => {
-    const item = state.find((item) => item.id === id);
-    if (item) {
-      const newQty = action === "INCREASE" ? item.qty + 1 : item.qty - 1;
-      if (newQty > 0) {
-        dispatch({
-          type: "ADD",
-          id: item.id,
-          name: item.name,
-          price: (item.price / item.qty) * newQty, // Adjust price based on new quantity
-          qty: newQty,
-          priceOptions: item.size,
-          img: item.img,
-        });
-      }
-    }
+  const getTotalPrice = () => {
+    return state.reduce((total, item) => total + parseFloat(item.price), 0);
+    // return state.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
   };
 
-  const getTotalPrice = () => {
-    return state.reduce((acc, item) => acc + parseFloat(item.price), 0).toFixed(2);
+  const router = useRouter();
+  const handleUpdateCart = () => {
+    router.push('/menu'); 
   };
+  const handleCheckout = () => {
+    // router.push('/checkout'); 
+    dispatch({type:"DROP" })
+  };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -50,7 +43,7 @@ const Cart = () => {
             <tbody>
               {state.map((item, index) => (
                 <tr key={index} className="border-b">
-                  <td className="py-4"></td>
+                  <td className="py-4 text-zinc-950 text-lg" >{index+1}.</td>
                   <td className="py-4">
                     <div className="flex items-center">
                       <div className="hidden sm:block">
@@ -94,6 +87,20 @@ const Cart = () => {
           </table>
           <div className="text-right my-8">
             <h3 className="text-2xl font-bold text-zinc-950">Total: ${getTotalPrice()}</h3>
+          </div>
+          <div className="flex justify-center md:justify-end md:gap-6 gap-2 mb-14">
+            <button
+              onClick={handleUpdateCart}  // Add onClick for update cart
+              className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-slate-950 hover:text-white"
+            >
+              update cart
+            </button>
+            <button
+              onClick={handleCheckout}  // Add onClick for checkout
+              className="bg-slate-950 text-white font-bold tracking-wider uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950"
+            >
+              check out
+            </button>
           </div>
         </div>
       )}

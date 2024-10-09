@@ -45,6 +45,8 @@ const reducer = (state, action) => {
                 }
                 return item;
             });
+        case "DROP":
+            return [];
         default:
             return state;
     }

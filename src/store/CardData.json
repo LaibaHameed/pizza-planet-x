@@ -1,6 +1,5 @@
 [
   {
-    "id": "0",
     "name": "MARGHERITA",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -9,7 +8,6 @@
     "img": "/pizzas/pizza-6.png"
   },
   {
-    "id": "1",
     "name": "Cheese Pizza",
     "category": "Pizza",
     "foodType": "Veg",
@@ -18,7 +16,6 @@
     "img": "/pizzas/pizza-3.png"
   },
   {
-    "id": "2",
     "name": "Buffalo Pizza",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -27,7 +24,6 @@
     "img": "/pizzas/pizza-4.png"
   },
   {
-    "id": "3",
     "name": "BBQ Chicken Pizza",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -36,7 +32,6 @@
     "img": "/pizzas/pizza-5.png"
   },
   {
-    "id": "4",
     "name": "Meat Pizza",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -45,7 +40,6 @@
     "img": "/pizzas/pizza-2.png"
   },
   {
-    "id": "5",
     "name": "Hawaiian Pizza",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -54,7 +48,6 @@
     "img": "/pizzas/pizza-7.png"
   },
   {
-    "id": "6",
     "name": "Veggie Pizza",
     "category": "Pizza",
     "foodType": "Veg",
@@ -63,7 +56,6 @@
     "img": "/pizzas/pizza-8.png"
   },
   {
-    "id": "7",
     "name": "Chicken Pepperoni Pizza",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -72,7 +64,6 @@
     "img": "/pizzas/pizza-1.png"
   },
   {
-    "id": "8",
     "name": "Chicken Supreme",
     "category": "Pizza",
     "foodType": "Non-Veg",
@@ -81,7 +72,6 @@
     "img": "/pizzas/pizza-6.png"
   },
   {
-    "id": "9",
     "name": "Normal Soda",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -90,7 +80,6 @@
     "img": "/pizzas/soda.png"
   },
   {
-    "id": "10",
     "name": "Light Soda",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -99,7 +88,6 @@
     "img": "/pizzas/lightSoda.png"
   },
   {
-    "id": "11",
     "name": "Lemon Tea",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -108,7 +96,6 @@
     "img": "/pizzas/lemonTea.png"
   },
   {
-    "id": "12",
     "name": "Milkshake",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -117,7 +104,6 @@
     "img": "/pizzas/milkshak.png"
   },
   {
-    "id": "13",
     "name": "Strawberry Pie",
     "category": "Sides & Beverages",
     "foodType": "Non-Veg",
@@ -126,7 +112,6 @@
     "img": "/pizzas/strawberry-pie.png"
   },
   {
-    "id": "14",
     "name": "Special Cupcake",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -135,7 +120,6 @@
     "img": "/pizzas/cupcake.png"
   },
   {
-    "id": "15",
     "name": "Coconut Icecream",
     "category": "Sides & Beverages",
     "foodType": "Veg",
@@ -144,7 +128,6 @@
     "img": "/pizzas/icecream.png"
   },
   {
-    "id": "16",
     "name": "Berries Icecream",
     "category": "Sides & Beverages",
     "foodType": "Veg",
