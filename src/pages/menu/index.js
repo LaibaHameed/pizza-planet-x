@@ -1,14 +1,15 @@
 // components/menu/Menu.js
 import Card from "@/components/home/Card";
-import cardData from "../../store/CardData.json";
+// import cardData from "../../store/CardData.json";
 import { useState } from "react";
 
-export default function Menu() {
+
+export default function Menu({data}) {
     const categories = new Set();
     const fooddata = [];
 
     const handleData = () => {
-        cardData.forEach((data) => {
+        data?.forEach((data) => {
             fooddata.push(data);
             categories.add(data.category);
         });
@@ -77,3 +78,4 @@ export default function Menu() {
         </>
     );
 }
+

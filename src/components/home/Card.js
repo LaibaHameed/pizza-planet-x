@@ -1,11 +1,13 @@
 import { CartContext } from '@/utils/contextReducer';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState, useContext } from 'react';
 
 const Card = ({ fooddata }) => {
     const { state, dispatch } = useContext(CartContext);
     
-    const { id, img, name, description, price } = fooddata;
+    const { _id, img, name, description, price } = fooddata;
+    let id = _id;
     const priceOptions = Object.keys(price); // Get price options based on the keys of price object
 
     const [size, setSize] = useState(priceOptions[1]); // Initialize size to the first option
@@ -43,9 +45,10 @@ const Card = ({ fooddata }) => {
         
     };
     
-
     return (
         <div className="shadow-sm border-2  p-4 max-w-xs mx-auto my-4">
+            <Link href={{pathname: "/item/[item"}} as={`item/${fooddata["_id"]}`} >
+            
             <div className="relative bg-red-500 rounded-full overflow-hidden">
                 <Image src={img} alt="pizza image" className="w-full object-cover transition-transform duration-700 hover:scale-105 hover:rotate-12" width={300} height={200} />
             </div>
@@ -88,6 +91,7 @@ const Card = ({ fooddata }) => {
                     Add to Cart
                 </button>
             </div>
+            </Link>
         </div>
     );
 };

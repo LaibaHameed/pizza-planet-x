@@ -2,46 +2,49 @@ import mongoose from "mongoose";
 require('dotenv').config();
 
 const mongoURI = process.env.DB_URL;
-const connection = {};
+let isConnected = false; // Track connection status
 
 async function connect() {
-    if (connection.isConnected) {
-        console.log("already connected");
+    if (isConnected) {
+        console.log("Already connected");
         return;
     }
-    if (mongoose.connections.length > 0) {
-        connection.isConnected = mongoose.connections[0].readyState;
 
-        if (connection.isConnected === 1) {
-            console.log("use previous connection");
+    if (mongoose.connections.length > 0) {
+        isConnected = mongoose.connections[0].readyState;
+        if (isConnected === 1) {
+            console.log("Using existing connection");
             return;
         }
-
         await mongoose.disconnect();
     }
 
-    const db = await mongoose.connect(mongoURI, {
-        connectTimeoutMS: 60000,  // 60 seconds
-        socketTimeoutMS: 60000,   // 60 seconds
-    });
+    try {
+        const db = await mongoose.connect(mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            connectTimeoutMS: 60000,  // 60 seconds
+            socketTimeoutMS: 60000,   // 60 seconds
+        });
 
-    connection.isConnected = db.connections[0].readyState;
-    console.log("new connection", db.connection.name);
-}
-
-connect();
-
-async function disconnect() {
-    if (connection.isConnected) {
-        if (process.env.NODE_ENV === "production") {
-            await mongoose.disconnect();
-            connection.isConnected = false;
-        } else {
-            console.log("not disconnected");
-        }
+        isConnected = db.connections[0].readyState;
+        console.log("New connection established");
+    } catch (error) {
+        console.error("MongoDB connection error:", error);
+        throw new Error('Failed to connect to database');
     }
 }
 
+async function disconnect() {
+    if (isConnected) {
+        if (process.env.NODE_ENV === "production") {
+            await mongoose.disconnect();
+            isConnected = false;
+        } else {
+            console.log("Not disconnected (in development mode)");
+        }
+    }
+}
 
 const db = { connect, disconnect };
 export default db;
