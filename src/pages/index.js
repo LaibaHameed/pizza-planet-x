@@ -1,18 +1,14 @@
-// pages/Home.js
-
 import HeroSection from "@/components/home/HeroSection";
 import Menu from "@/pages/menu";
-import { CartProvider } from "@/utils/contextReducer";
-import { baseUrl } from "@/utils/baseUrl";
 import Head from "next/head";
-// pages/Home.js
+import { baseUrl } from "@/utils/baseUrl";
 
 export default function Home({ data }) {
   return (
     <>
-    <Head>
-      <title>PIZZAPLANET </title>
-    </Head>
+      <Head>
+        <title>PIZZAPLANET </title>
+      </Head>
       <HeroSection />
       <Menu data={data} />
     </>

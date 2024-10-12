@@ -1,10 +1,8 @@
-// components/menu/Menu.js
 import Card from "@/components/home/Card";
-// import cardData from "../../store/CardData.json";
 import { useState } from "react";
+import { baseUrl } from "@/utils/baseUrl";
 
-
-export default function Menu({data}) {
+export default function Menu({ data }) {
     const categories = new Set();
     const fooddata = [];
 
@@ -20,11 +18,12 @@ export default function Menu({data}) {
     const categoryArray = [...categories]; // Convert Set to Array
 
     const [typeFilter, setTypeFilter] = useState(false);
+
     return (
         <>
             <div className="flex flex-col justify-center content-center gap-4 p-4">
                 <h1 className="text-center uppercase text-zinc-950 md:text-6xl text-4xl font-bold mt-10">
-                    Pizzaplannet&#39;s Menu
+                    Pizzaplanet&#39;s Menu
                 </h1>
                 <p className="text-center text-gray-700 w-full lg:w-2/3 mx-auto md:text-lg leading-snug md:leading-normal md:tracking-wide md:font-semibold">
                     Amet consectetur adipiscing elit enim bibendum sed et aliquet aliquet
@@ -78,4 +77,19 @@ export default function Menu({data}) {
         </>
     );
 }
+ export async function getStaticProps() { 
+    let data = null;
+    try {
+        const response = await fetch(baseUrl + "api/foodData", { method: "GET" });
+        const pizzaData = await response.json();
+        data = pizzaData.data || [];
+    } catch (error) {
+        console.log('Error fetching food data:', error);
+    }
 
+    return {
+        props: {
+            data,
+        },
+    };
+} 

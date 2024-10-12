@@ -20,6 +20,7 @@ const Card = ({ fooddata }) => {
     let finalPrice = parseFloat(selectedPrice * quantity).toFixed(2);
 
     const handleAddToCart = async() => {
+        console.log("Current Cart State:", state); // Debugging line
         const updateItem = await state.find((item)=>item.tempId === id+size)
         if(updateItem){
             dispatch({
@@ -52,9 +53,10 @@ const Card = ({ fooddata }) => {
             <div className="relative bg-red-500 rounded-full overflow-hidden">
                 <Image src={img} alt="pizza image" className="w-full object-cover transition-transform duration-700 hover:scale-105 hover:rotate-12" width={300} height={200} />
             </div>
+
             <h2 className="text-lg font-bold mt-2 text-slate-950">{name}</h2>
             <p className="text-gray-700 mt-1 text-sm">{description}</p>
-
+            </Link>
             <div className="flex justify-between content-evenly my-3">
                 <div>
                     <label className="block text-sm font-semibold text-slate-950">Size</label>
@@ -91,7 +93,7 @@ const Card = ({ fooddata }) => {
                     Add to Cart
                 </button>
             </div>
-            </Link>
+            
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { createContext, useReducer, useMemo } from "react";
+import { createContext, useReducer, useMemo} from "react";
 
 export const CartContext = createContext();
 
@@ -48,13 +48,12 @@ const reducer = (state, action) => {
         case "DROP":
             return [];
         default:
-            return state;
+            return [...state];
     }
 };
 
 
-
-// 1. CartProvider state or dispatch sb childrens ko available kara ra hai
+// 1. CartProvider state ko or dispatch sb childrens ko available kara ra hai
 // 2.(a) reducer function hai jo state or dispatch ka use kr k koi action perform kare ga
 // 2.(b) or array [] mai sare objects add ho gy jin py reducer ne koi action perform kia ho ga
 export const CartProvider = ({ children }) => {
