@@ -77,7 +77,7 @@ export default function Menu({ data }) {
         </>
     );
 }
- export async function getStaticProps() { 
+export async function getStaticProps() {
     let data = null;
     try {
         const response = await fetch(baseUrl + "api/foodData", { method: "GET" });

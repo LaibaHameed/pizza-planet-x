@@ -1,0 +1,51 @@
+import Users from "@/models/Users";
+import db from "@/utils/db";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const jwtSecret = "laiba012";
+
+export default async function handler(req, res){
+    let success = false;
+
+    if(req.method === "POST"){
+
+        await db.connect();
+        
+        try {
+            const {email, password} = req.body;
+            let user = await Users.findOne({email});
+
+            if(!user){
+                return res.status(400).json({success, error: "try logging in with different email"})
+            }
+
+            const pwdCompare = await bcrypt.compare(password, user.password);
+            if(!pwdCompare){
+                return  res.status(400).json({success, error: "your password is wrong"})
+            }
+
+            const data = {
+                user: {
+                    id: user._id,
+                },
+            };
+
+            // Generate JWT token
+            const authToken = jwt.sign(data, jwtSecret);
+            success = true;
+
+            // Send success response
+            res.json({ success, authToken });
+
+        } catch (error) {
+            res.send("Server error")
+        }finally {
+            // Always disconnect from the database after processing the request
+            await db.disconnect();
+        }
+    }else {
+        // Handle non-POST requests
+        res.status(405).json({ message: "Method Not Allowed" });
+    }  
+}

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const dataSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
         name: { type: String, required: true },
         email: { type: String, required: true, unique: true },
@@ -15,6 +15,6 @@ const dataSchema = new mongoose.Schema(
     }
 );
 
-const Users = mongoose.models.PizzaData || mongoose.model("Users", userSchema);
+const Users = mongoose.models.Users || mongoose.model("Users", userSchema);
 
 export default Users;
