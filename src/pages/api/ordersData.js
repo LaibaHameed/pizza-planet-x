@@ -38,6 +38,6 @@ export default async function handler(req, res) {
         }
     } else {
         res.status(405).json({ error: "Method not allowed" });
-        await db.disconnect(); // Disconnect in case of an invalid request method
+        await db.disconnect();
     }
 }

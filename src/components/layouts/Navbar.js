@@ -11,8 +11,8 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // For authentication state
-  const [alert, setAlert] = useState(null); // State for alert messages
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [alert, setAlert] = useState(null); 
   const router = useRouter();
 
   // Refs for the dropdowns
@@ -57,12 +57,12 @@ const Navbar = () => {
 
   // Logout function
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token from localStorage
-    localStorage.removeItem('userEmail'); // Remove other user data if needed
-    setIsAuthenticated(false); // Update state
-    setAlert({ type: 'success', message: 'You have successfully logged out!' }); // Set alert message
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('userEmail'); 
 
-    // Clear the alert after 2 seconds
+    setIsAuthenticated(false); // Update state
+    
+    setAlert({ type: 'success', message: 'You have successfully logged out!' }); 
     setTimeout(() => {
       setAlert(null); // Remove alert message
     }, 1000);
@@ -77,11 +77,9 @@ const Navbar = () => {
     <nav className="bg-red-500 p-4 sticky top-0 py-9 z-10">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        {/* <div className="p"> */}
           <Link href="/">
             <Image src={"/logo.svg"} alt="logo" width={200} height={200} />
           </Link>
-        {/* </div> */}
 
         {/* Menu Links (Desktop) */}
         <div className="hidden md:flex space-x-7 uppercase font-bold text-sm">
@@ -154,7 +152,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Alert Message */}
       {alert && (
         <div className={`fixed bottom-4 right-4 mb-4 mr-4 px-6 py-4 rounded shadow-lg transition-opacity duration-300 ${alert.type === 'success' ? 'bg-green-100 border border-green-400 text-green-700' : 'bg-red-100 border border-red-400 text-red-700'}`}>
           <span>{alert.message}</span>

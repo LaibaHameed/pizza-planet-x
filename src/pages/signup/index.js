@@ -5,13 +5,13 @@ import React, { useState, useEffect } from 'react';
 const Signup = () => {
   const router = useRouter();
   const [credentials, setCredentials] = useState({ email: "", password: "", name: "", geolocation: "" });
-  const [loading, setLoading] = useState(false); // Loading state
-  const [alert, setAlert] = useState({ type: '', message: '' }); // Alert state
+  const [loading, setLoading] = useState(false); 
+  const [alert, setAlert] = useState({ type: '', message: '' }); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
-    setAlert({ type: '', message: '' }); // Clear previous alert
+    setLoading(true);
+    setAlert({ type: '', message: '' }); 
 
     const response = await fetch("/api/userSignup", {
       method: "POST",
@@ -27,14 +27,14 @@ const Signup = () => {
     });
 
     const json = await response.json();
-    setLoading(false); // End loading
+    setLoading(false); 
 
     if (json.success) {
-      setAlert({ type: 'success', message: 'You have successfully signed up!' }); // Set success message
+      setAlert({ type: 'success', message: 'You have successfully signed up!' }); 
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("userEmail", credentials.email);
       setTimeout(() => {
-        router.push('/login'); // Redirect to login page after a delay
+        router.push('/login'); 
       }, 1000);
     } else {
       setAlert({ type: 'error', message: json.error || 'Sign-up failed. Please try again.' });
@@ -45,13 +45,12 @@ const Signup = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  // Automatically remove alert after 3 seconds
   useEffect(() => {
     if (alert.message) {
       const timer = setTimeout(() => {
-        setAlert({ type: '', message: '' }); // Clear alert after 3 seconds
+        setAlert({ type: '', message: '' }); 
       }, 3000);
-      return () => clearTimeout(timer); // Clean up timer on component unmount
+      return () => clearTimeout(timer);
     }
   }, [alert]);
 
@@ -154,7 +153,6 @@ const Signup = () => {
         </p>
       </div>
 
-      {/* Alert Component */}
       {alert.message && (
         <div className={`fixed bottom-4 right-4 mb-4 mr-4 px-6 py-4 rounded shadow-lg transition-opacity duration-300 ${alert.type === 'success' ? 'bg-green-100 border border-green-400 text-green-700' : 'bg-red-100 border border-red-400 text-red-700'}`}>
           <span>{alert.message}</span>

@@ -5,13 +5,13 @@ import React, { useState, useEffect } from 'react';
 const Login = () => {
   const router = useRouter();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false); // Loading state
-  const [alert, setAlert] = useState({ type: '', message: '' }); // Alert state
+  const [loading, setLoading] = useState(false); 
+  const [alert, setAlert] = useState({ type: '', message: '' }); 
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault(); 
     setLoading(true);
-    setAlert({ type: '', message: '' }); // Clear previous alert
+    setAlert({ type: '', message: '' }); 
 
     const response = await fetch("/api/userLogin", {
       method: "POST",
@@ -28,14 +28,14 @@ const Login = () => {
     setLoading(false);
 
     if (json.success) {
-      setAlert({ type: 'success', message: 'You have successfully logged in!' }); // Set success message
+      setAlert({ type: 'success', message: 'You have successfully logged in!' }); 
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("userEmail", credentials.email);
       setTimeout(() => {
-        router.push('/'); // Redirect to home page after a delay
+        router.push('/'); 
       }, 1000);
     } else {
-      setAlert({ type: 'error', message: json.error || 'Login failed. Please try again.' }); // Set error message
+      setAlert({ type: 'error', message: json.error || 'Login failed. Please try again.' }); 
     }
   };
 
@@ -43,13 +43,12 @@ const Login = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  // Automatically remove alert after 3 seconds
   useEffect(() => {
     if (alert.message) {
       const timer = setTimeout(() => {
-        setAlert({ type: '', message: '' }); // Clear alert after 3 seconds
+        setAlert({ type: '', message: '' }); 
       }, 3000);
-      return () => clearTimeout(timer); // Clean up timer on component unmount
+      return () => clearTimeout(timer); 
     }
   }, [alert]);
 

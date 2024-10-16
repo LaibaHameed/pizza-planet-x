@@ -40,7 +40,7 @@ const Orders = () => {
   }
 
   if (!Array.isArray(orders) || orders.length === 0) {
-    return <div>No orders found</div>;
+    return <p className="text-center text-wrap text-zinc-950 font-bold text-2xl mb-14">No Orders Found</p>;
   }
 
   return (

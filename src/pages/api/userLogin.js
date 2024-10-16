@@ -3,8 +3,6 @@ import db from "@/utils/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const jwtSecret = "laiba012";
-
 export default async function handler(req, res){
     let success = false;
 
@@ -31,21 +29,17 @@ export default async function handler(req, res){
                 },
             };
 
-            // Generate JWT token
-            const authToken = jwt.sign(data, jwtSecret);
+            const authToken = jwt.sign(data, process.env.jwtSecret);
             success = true;
 
-            // Send success response
             res.json({ success, authToken });
 
         } catch (error) {
             res.send("Server error")
         }finally {
-            // Always disconnect from the database after processing the request
             await db.disconnect();
         }
     }else {
-        // Handle non-POST requests
         res.status(405).json({ message: "Method Not Allowed" });
     }  
 }

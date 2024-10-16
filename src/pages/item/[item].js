@@ -4,21 +4,20 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState, useContext } from 'react';
-import { CartContext } from '@/utils/contextReducer'; // Import CartContext
+import { CartContext } from '@/utils/contextReducer'; 
 
 const Item = ({ data }) => {
     const { state, dispatch } = useContext(CartContext);
     
     const { _id, img, name, description, price } = data;
     let id = _id;
-    const priceOptions = Object.keys(price); // Get price options based on the keys of price object
+    const priceOptions = Object.keys(price); 
 
-    const [size, setSize] = useState(priceOptions[1]); // Initialize size to the first option
-    const [quantity, setQuantity] = useState(1); // Initialize quantity to 1
+    const [size, setSize] = useState(priceOptions[1]); 
+    const [quantity, setQuantity] = useState(1); 
 
     let quantityArray = [1, 2, 3, 4, 5];
 
-    // Calculate price based on the selected size
     const selectedPrice = price[size];
     let finalPrice = parseFloat(selectedPrice * quantity).toFixed(2);
 
@@ -57,7 +56,6 @@ const Item = ({ data }) => {
                 <title>{title}</title>
             </Head>
 
-            {/* Centered Back Button */}
             <div className="flex justify-center my-4">
                 <span className='border-2 rounded-full border-b-zinc-950 p-2'>
                     <Link href="/menu">
@@ -108,7 +106,6 @@ const Item = ({ data }) => {
                     </div>
 
                     {/* Price and Add to Cart Button */}
-                    {/* <div className="flex justify-between items-center mt-4"> */}
                         <span className="text-6xl font-bold text-slate-950 block mt-6">$ {finalPrice}</span>
                         <button
                             onClick={handleAddToCart}
@@ -116,7 +113,6 @@ const Item = ({ data }) => {
                         >
                             Add to Cart
                         </button>
-                    {/* </div> */}
                 </div>
 
                 {/* Image Section */}
@@ -138,20 +134,6 @@ const Item = ({ data }) => {
 };
 
 export default Item;
-
-// export async function getServerSideProps(context) {
-//     const { item } = context.query;
-//     const res = await fetch(baseUrl + "api/getDataById", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ item: item }),
-//     });
-//     const data = await res.json();
-
-//     return { props: { data: data } };
-// }
 
 export async function getServerSideProps(context) {
     const { item } = context.query;

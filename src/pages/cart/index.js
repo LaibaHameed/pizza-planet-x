@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { Trash2 } from "lucide-react";
 import { useRouter } from 'next/router';
 import Alert from "@/components/Alert";
-import { X } from "lucide-react"; // Import the cross/close icon
+import { X } from "lucide-react"; 
 
 const Cart = () => {
   const { state, dispatch } = useContext(CartContext);
-  const [alert, setAlert] = useState(null); // State for alert messages
-  const [showAuthDialog, setShowAuthDialog] = useState(false); // State for showing authentication dialog
+  const [alert, setAlert] = useState(null); 
+  const [showAuthDialog, setShowAuthDialog] = useState(false); 
   const getUnitPrice = (item) => item.price / item.qty;
 
   const getTotalPrice = () => {
@@ -26,7 +26,7 @@ const Cart = () => {
     let userEmail = localStorage.getItem('userEmail');
     
     if (!userEmail) {
-      setShowAuthDialog(true); // Show the authentication dialog if user is not logged in
+      setShowAuthDialog(true); 
       return;
     }
 
@@ -68,7 +68,6 @@ const Cart = () => {
     setAlert(null);
   };
 
-  // Handle user redirect to sign up or log in
   const handleRedirectToAuth = (path) => {
     setShowAuthDialog(false);
     router.push(path);

@@ -3,8 +3,6 @@ import db from "@/utils/db";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const jwtSecret = "laiba012"; // This should be in an environment variable
-
 export default async function handler(req, res) {
     let success = false;
 
@@ -18,11 +16,10 @@ export default async function handler(req, res) {
             let findUser = await Users.findOne({ email });
             if (!findUser) {
 
-                // Generate salt and hash password
                 const salt = await bcryptjs.genSalt(10);
                 const hashedPassword = await bcryptjs.hash(password, salt);
 
-                // Create new user in the database
+                // Create new user
                 const user = await Users.create({
                     name,
                     email,
@@ -38,7 +35,7 @@ export default async function handler(req, res) {
                 };
 
                 // Generate JWT token
-                const authToken = jwt.sign(data, jwtSecret);
+                const authToken = jwt.sign(data, process.env.jwtSecret);
                 success = true;
 
                 // Send success response
@@ -49,14 +46,11 @@ export default async function handler(req, res) {
             }
 
         } catch (error) {
-            // Send error response
             res.status(500).json({ error: error.message });
         } finally {
-            // Always disconnect from the database after processing the request
             await db.disconnect();
         }
     } else {
-        // Handle non-POST requests
         res.status(405).json({ message: "Method Not Allowed" });
     }
 }
