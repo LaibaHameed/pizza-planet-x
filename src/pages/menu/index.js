@@ -21,15 +21,12 @@ export default function Menu({ data }) {
 
     return (
         <>
-            <div className="flex flex-col justify-center content-center gap-4 p-4">
+            <div className="flex flex-col justify-center items-center content-center gap-4 p-4">
                 <h1 className="text-center uppercase text-zinc-950 md:text-6xl text-4xl font-bold mt-10">
-                    Pizzaplanet&#39;s Menu
+                    Our Menu
                 </h1>
-                <p className="text-center text-gray-700 w-full lg:w-2/3 mx-auto md:text-lg leading-snug md:leading-normal md:tracking-wide md:font-semibold">
-                    Amet consectetur adipiscing elit enim bibendum sed et aliquet aliquet
-                    risus tempor semper odio egestas id pulvinar consectetur elit tortor
-                    non hac pellentesque lacus donec accumsan quisque ultricies adipiscing
-                    mauris tortor cras est eu accumsan mauris.
+                <p className="text-center mt-6 text-gray-700 max-w-lg mx-auto md:text-lg leading-snug md:leading-normal md:tracking-wide md:font-semibold">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit egestas eros eu egestas amet nisi lobortis.
                 </p>
             </div>
             <div className="flex justify-center md:justify-start md:gap-6 gap-2 my-10 ml-10">
