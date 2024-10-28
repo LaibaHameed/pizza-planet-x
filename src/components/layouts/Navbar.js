@@ -85,7 +85,7 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-7 uppercase font-bold text-sm">
           <Link href="/" className="text-white hover:text-black tracking-wider">Home</Link>
           <Link href="/menu" className="text-white hover:text-black tracking-wider">Menu</Link>
-          <Link href="/order" className="text-white hover:text-black tracking-wider">Order</Link>
+          <Link href="/about" className="text-white hover:text-black tracking-wider">About us</Link>
           <Link href="/contact" className="text-white hover:text-black tracking-wider">Contact</Link>
         </div>
 
@@ -147,7 +147,7 @@ const Navbar = () => {
         <div className="md:hidden uppercase mt-10 font-bold text-md ml-7">
           <Link href="/" className="block text-white hover:text-black px-4 py-2 tracking-wider">Home</Link>
           <Link href="/menu" className="block text-white hover:text-black px-4 py-2 tracking-wider">Menu</Link>
-          <Link href="/order" className="block text-white hover:text-black px-4 py-2 tracking-wider">Order</Link>
+          <Link href="/about" className="block text-white hover:text-black px-4 py-2 tracking-wider">About us</Link>
           <Link href="/contact" className="block text-white hover:text-black px-4 py-2 tracking-wider">Contact</Link>
         </div>
       )}
