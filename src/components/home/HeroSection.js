@@ -11,16 +11,19 @@ const HeroSection = () => {
                 <p className="text-slate-100 mb-6 lg:py-4 md:tracking-wide 2xl:text-xl xl:text-lg sm:text-md text-sm leading-tight">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit ugue quam diam vitae velit bibendum elementum eget non vivamus volutpat odio cras vestibulum purus aliquam.
                 </p>
-                <div className="flex justify-center md:justify-start md:gap-6 gap-2" >
-                    <button className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-slate-950 hover:text-white">
+                
+                {/* Buttons Section */}
+                <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-2 md:gap-6">
+                    <button className="max-w-60 bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-slate-950 hover:text-white">
                         Order Online
                     </button>
-                    <button className="bg-slate-950 text-white font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
-                        Book a Table
+                    <button className="max-w-60 bg-slate-950 text-white font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
+                    Drive Through
                     </button>
                 </div>
             </div>
 
+            {/* Image Section */}
             <div className="md:w-1/2 mt-8 md:mt-0 object-cover animate-fadeInRight transition-transform duration-700 hover:scale-105 hover:rotate-12">
                 <Image
                     src="/main.png" 

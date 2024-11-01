@@ -23,17 +23,17 @@ const Footer = () => {
           </p>
           {/* Social Links */}
           <div className="flex space-x-4">
-            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-yellow-300 bg-white">
-              <FacebookIcon className="w-8 h-8" /> {/* facebook */}
+            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-blue-500 hover:text-white bg-white">
+              <FacebookIcon className="w-8 h-8" />
             </Link>
-            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-yellow-300 bg-white">
-              <TwitterIcon className="w-8 h-8" /> {/* twitter */}
+            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-blue-500 hover:text-white bg-white">
+              <TwitterIcon className="w-8 h-8" />
             </Link>
-            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-yellow-300 bg-white">
-              <InstagramIcon className="w-8 h-8" /> {/* instagram */}
+            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-red-500 hover:text-white bg-white">
+              <InstagramIcon className="w-8 h-8" />
             </Link>
-            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-yellow-300 bg-white">
-              <YoutubeIcon className="w-8 h-8" /> {/* YouTube */}
+            <Link href="/" className="text-zinc-950 rounded-full p-2 hover:bg-red-500 hover:text-white bg-white">
+              <YoutubeIcon className="w-8 h-8" />
             </Link>
           </div>
         </div>
@@ -81,11 +81,11 @@ const Footer = () => {
         </div>
       </div>
 
-{/* <hr className="text-yellow-50" /> */}
-<div className="h-px bg-slate-500 my-8"></div>
+      {/* <hr className="text-yellow-50" /> */}
+      <div className="h-px bg-slate-500 my-8"></div>
       {/* Copyright */}
       <div className="mt-6 text-center text-white text-lg tracking-wider text-wrap mx-6">
-        &copy; Copyright - Pizzaplanet X | Designed by Laiba Hameed 
+        &copy; Copyright - Pizzaplanet X | Designed by Laiba Hameed
       </div>
     </footer>
   );

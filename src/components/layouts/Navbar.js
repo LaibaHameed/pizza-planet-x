@@ -11,8 +11,8 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
-  const [alert, setAlert] = useState(null); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [alert, setAlert] = useState(null);
   const router = useRouter();
 
   // Refs for the dropdowns
@@ -57,12 +57,12 @@ const Navbar = () => {
 
   // Logout function
   const handleLogout = () => {
-    localStorage.removeItem('token'); 
-    localStorage.removeItem('userEmail'); 
+    localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
 
     setIsAuthenticated(false); // Update state
-    
-    setAlert({ type: 'success', message: 'You have successfully logged out!' }); 
+
+    setAlert({ type: 'success', message: 'You have successfully logged out!' });
     setTimeout(() => {
       setAlert(null); // Remove alert message
     }, 1000);
@@ -77,9 +77,9 @@ const Navbar = () => {
     <nav className="bg-red-500 p-4 sticky top-0 py-9 z-10">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-          <Link href="/">
-            <Image src={"/logo.svg"} alt="logo" width={200} height={200} />
-          </Link>
+        <Link href="/">
+          <Image src={"/logo.svg"} alt="logo" width={200} height={200} />
+        </Link>
 
         {/* Menu Links (Desktop) */}
         <div className="hidden md:flex space-x-7 uppercase font-bold text-sm">

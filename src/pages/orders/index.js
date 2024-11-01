@@ -20,7 +20,7 @@ const Orders = () => {
       const result = await response.json();
 
       // Correctly access the nested order_data array
-      console.log('API Result:', result);
+      // console.log('API Result:', result);
 
       setOrders(result?.order_data?.order_data || []);
       setLoading(false);

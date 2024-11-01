@@ -5,7 +5,7 @@ import React from 'react'
 const HomeMenu = () => {
     let array = [["/pizzas/menu-1.png", "pizza's"], ["/pizzas/menu-2.png", "cold drinks"], ["/pizzas/menu-3.png", "deserts"]]
     return (
-        <>
+        <div className='py-10'>
             <div className="flex flex-col justify-center content-center gap-4 p-4">
                 <h1 className="text-center uppercase text-zinc-950 md:text-6xl text-4xl font-bold mt-10">
                     Pizzaplanet&#39;s Menu
@@ -28,14 +28,14 @@ const HomeMenu = () => {
                 }
             </div>
             <div className="flex sm:flex-row gap-5 items-center justify-center sm:gap-10 my-10 w-full" >
-                <button className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase px-4 py-2 sm:py-6 sm:px-6 md:text-sm  transition-colors duration-300 hover:bg-slate-950 hover:text-white ">
+                <button className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase py-4 px-6  transition-colors duration-300 hover:bg-slate-950 hover:text-white ">
                     <Link href="/menu">Order Online</Link> 
                 </button>
-                <button className="bg-slate-950 text-white font-bold tracking-wide uppercase px-4 py-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
+                <button className="bg-slate-950 text-white font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
                     <Link href="/menu">Go to Menu</Link>
                 </button>
             </div>
-        </>
+        </div>
     )
 }
 
