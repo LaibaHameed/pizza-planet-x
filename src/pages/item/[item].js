@@ -23,21 +23,20 @@ const Item = ({ data }) => {
 
     const handleAddToCart = async() => {
         console.log("Current Cart State:", state); // Debugging line
-        const updateItem = await state.find((item)=>item.tempId === id+size)
-        if(updateItem){
+        const updateItem = await state.find((item) => item.tempId === id + size);
+        if (updateItem) {
             dispatch({
                 type: "UPDATE",
                 id: id,
-                tempId : id+size,
+                tempId: id + size,
                 price: finalPrice,
                 qty: quantity
             });
-        }
-        if(!updateItem){
+        } else {
             dispatch({
                 type: "ADD",
                 id: id,
-                tempId : id+size,
+                tempId: id + size,
                 name: name,
                 price: finalPrice,
                 qty: quantity,
@@ -45,7 +44,6 @@ const Item = ({ data }) => {
                 img: img
             });
         }
-        
     };
     
     const title = `${String(name)} - Menu Item`;
@@ -65,16 +63,15 @@ const Item = ({ data }) => {
             </div>
 
             {/* Product Page Layout */}
-            <div className="flex max-w-6xl mx-auto my-4 p-4">
-
+            <div className="flex flex-col md:flex-row max-w-6xl mx-auto my-4 p-4">
                 {/* Details Section */}
-                <div className="flex-1  mr-12">
-                    <h2 className="text-7xl font-bold text-slate-950">{name}</h2>
+                <div className="flex-1 mb-6 md:mb-0 md:mr-12">
+                    <h2 className="text-4xl md:text-7xl font-bold text-slate-950">{name}</h2>
                     <p className="text-gray-700 mt-5 text-lg">{description}</p>
 
                     {/* Size and Quantity Selectors */}
-                    <div className="flex justify-between my-4">
-                        <div className="w-1/2">
+                    <div className="flex flex-col md:flex-row justify-between my-4">
+                        <div className="w-full md:w-1/2 mb-4 md:mb-0">
                             <label className="block text-xl font-semibold text-slate-950">Size</label>
                             <select
                                 value={size}
@@ -89,7 +86,7 @@ const Item = ({ data }) => {
                             </select>
                         </div>
 
-                        <div className="w-1/2 ml-4">
+                        <div className="w-full md:w-1/2">
                             <label className="block text-xl font-semibold text-slate-950">Quantity</label>
                             <select
                                 value={quantity}
@@ -106,13 +103,14 @@ const Item = ({ data }) => {
                     </div>
 
                     {/* Price and Add to Cart Button */}
-                        <span className="text-6xl font-bold text-slate-950 block mt-6">$ {finalPrice}</span>
-                        <button
-                            onClick={handleAddToCart}
-                            className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase p-2 sm:py-6 sm:px-6 md:text-sm transition-colors duration-300 hover:bg-slate-950 hover:text-white text-2xl  mt-6"
-                        >
-                            Add to Cart
-                        </button>
+                    <span className="text-4xl md:text-6xl font-bold text-slate-950 block mt-6">$ {finalPrice}</span>
+                    <button
+                        onClick={handleAddToCart}
+                        className="bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase py-4 px-6  transition-colors duration-300 hover:bg-slate-950 hover:text-white ">
+                    
+                        Add to Cart
+                    </button>
+                    
                 </div>
 
                 {/* Image Section */}
@@ -127,7 +125,6 @@ const Item = ({ data }) => {
                         />
                     </div>
                 </div>
-
             </div>
         </>
     );
