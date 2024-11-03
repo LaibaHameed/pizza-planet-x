@@ -1,7 +1,6 @@
 import Card from "@/components/home/Card";
 import { useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
-import PizzaData from "@/models/PizzaData";
 
 export default function Menu({ data }) {
     const [typeFilter, setTypeFilter] = useState(false);
