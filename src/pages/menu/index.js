@@ -1,15 +1,16 @@
 import Card from "@/components/home/Card";
 import { useState } from "react";
 import { baseUrl } from "@/utils/baseUrl";
+import PizzaData from "@/models/PizzaData";
 
 export default function Menu({ data }) {
+    const [typeFilter, setTypeFilter] = useState(false);
     const categories = new Set();
     const fooddata = [];
 
     const handleData = () => {
-        data?.forEach((data) => {
-            fooddata.push(data);
-            categories.add(data.category);
+        data?.map((data) => {
+            return fooddata.push(data), categories.add(data.category);
         });
     };
 
@@ -17,7 +18,6 @@ export default function Menu({ data }) {
 
     const categoryArray = [...categories]; // Convert Set to Array
 
-    const [typeFilter, setTypeFilter] = useState(false);
 
     return (
         <>
@@ -74,19 +74,25 @@ export default function Menu({ data }) {
     );
 }
 
-export async function getStaticProps() {
-    let data = null;
-    try {
-        const response = await fetch(baseUrl + "api/foodData", { method: "GET" });
-        const pizzaData = await response.json();
-        data = pizzaData.data || [];
-    } catch (error) {
-        console.log('Error fetching food data:', error);
-    }
 
+export async function getStaticProps() {
+    let data;
+    try {
+        const pizzaData = await fetch(baseUrl + "api/foodData", { method: "GET" })
+            .then((response) => response.json())
+            .catch((error) => error.message);
+
+        data = await JSON.parse(JSON.stringify(pizzaData)); // step required during deployment in staticProps
+    } catch (error) {
+        console.log(error.message);
+    }
     return {
         props: {
-            data,
+            data: data.data || null,
         },
+        revalidate: 5,
     };
 }
+
+
+
