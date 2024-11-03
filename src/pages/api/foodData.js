@@ -38,4 +38,4 @@ export default async function handler(req, res) {
 
 export const dynamic = 'force-dynamic';
 
-response.headers.set('Cache-Control', 'no-store, max-age=0');
+// response.headers.set('Cache-Control', 'no-store, max-age=0');
