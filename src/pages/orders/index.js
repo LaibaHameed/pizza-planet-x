@@ -60,11 +60,11 @@ const Orders = () => {
               <table className="min-w-xl text-center">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-lg font-semibold px-4 py-3 text-zinc-950 transition duration-200">#</th>
-                    <th className="text-lg font-semibold px-4 py-3 text-zinc-950 transition duration-200">Item</th>
-                    <th className="text-lg font-semibold px-4 py-3 text-zinc-950 transition duration-200">Size</th>
-                    <th className="text-lg font-semibold px-4 py-3 text-zinc-950 transition duration-200">Quantity</th>
-                    <th className="text-lg font-semibold px-4 py-3 text-zinc-950 transition duration-200">Price</th>
+                    <th className="text-lg font-bold px-4 py-3 text-zinc-950 transition duration-200">#</th>
+                    <th className="text-lg font-bold px-4 py-3 text-zinc-950 transition duration-200">Item</th>
+                    <th className="text-lg font-bold px-4 py-3 text-zinc-950 transition duration-200">Size</th>
+                    <th className="text-lg font-bold px-4 py-3 text-zinc-950 transition duration-200">Quantity</th>
+                    <th className="text-lg font-bold px-4 py-3 text-zinc-950 transition duration-200">Price</th>
                   </tr>
                 </thead>
                 <tbody>

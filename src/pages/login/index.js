@@ -74,7 +74,7 @@ const Login = () => {
               onChange={handleChange}
               value={credentials.email}
               required
-              placeholder="Enter your email/username"
+              placeholder="Enter your email"
               className="w-full px-4 py-3 border border-zinc-400 text-zinc-950 focus:outline-none focus:border-red-400 bg-transparent"
             />
           </div>
