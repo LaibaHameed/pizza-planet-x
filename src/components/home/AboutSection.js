@@ -50,7 +50,7 @@ const AboutSection = () => {
                         About Us
                     </Link>
                     <Link
-                        href="/reservations"
+                        href="/menu"
                         className="border border-white text-white font-bold tracking-wide uppercase py-3 px-6 transition-colors duration-300 hover:bg-white hover:border-white hover:text-slate-950"
                     >
                         Order Now

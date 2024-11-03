@@ -59,7 +59,7 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-white px-4 sm:px-6 lg:px-8">
       <div className="bg-white shadow-xl w-full max-w-lg px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14 rounded-lg">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-zinc-700 mb-6 uppercase tracking-wider">
-          Welcome Back
+          Welcome to Pizzaplanet
         </h2>
 
         {/* Form */}

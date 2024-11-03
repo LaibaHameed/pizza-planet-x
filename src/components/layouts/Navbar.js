@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { CartContext } from '@/utils/contextReducer';
-import Link from 'next/link';
 import Image from 'next/image';
 import { LucideLogIn, MenuIcon, ShoppingCart, User, UserPlusIcon, X, LogOut } from 'lucide-react';
 import { useRouter } from 'next/router';
@@ -24,9 +23,6 @@ const Navbar = () => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setProfileOpen(false);
-      }
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false);
       }
     };
 
@@ -73,26 +69,32 @@ const Navbar = () => {
     }, 1000);
   };
 
+  // Navigation handler
+  const handleNavigation = (path) => {
+    router.push(path);
+    setIsOpen(false); // Close the menu on mobile after navigation
+  };
+
   return (
     <nav className="bg-red-500 p-4 sticky top-0 py-9 z-10">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link href="/">
+        <button onClick={() => handleNavigation('/')} className="focus:outline-none">
           <Image src={"/logo.svg"} alt="logo" width={200} height={200} />
-        </Link>
+        </button>
 
         {/* Menu Links (Desktop) */}
         <div className="hidden md:flex space-x-7 uppercase font-bold text-sm">
-          <Link href="/" className="text-white hover:text-black tracking-wider">Home</Link>
-          <Link href="/menu" className="text-white hover:text-black tracking-wider">Menu</Link>
-          <Link href="/about" className="text-white hover:text-black tracking-wider">About us</Link>
-          <Link href="/contact" className="text-white hover:text-black tracking-wider">Contact</Link>
+          <button onClick={() => handleNavigation('/')} className="text-white hover:text-black tracking-wider uppercase">Home</button>
+          <button onClick={() => handleNavigation('/menu')} className="text-white hover:text-black tracking-wider uppercase">Menu</button>
+          <button onClick={() => handleNavigation('/about')} className="text-white hover:text-black tracking-wider uppercase">About us</button>
+          <button onClick={() => handleNavigation('/contact')} className="text-white hover:text-black tracking-wider uppercase">Contact</button>
         </div>
 
         {/* Profile, Cart, and Mobile Menu Icons */}
         <div className="flex items-center space-x-3 space-md-8 ml-4">
           {/* Profile Icon */}
-          <div className="relative  ml-4" ref={profileRef}>
+          <div className="relative ml-4" ref={profileRef}>
             <button onClick={() => setProfileOpen(!profileOpen)} className="text-white hover:text-black focus:outline-none">
               <User className="w-6 h-6" />
             </button>
@@ -100,19 +102,19 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 bg-slate-950 shadow-lg py-4 w-48 h-auto flex flex-col justify-center items-center uppercase font-bold text-sm">
                 {isAuthenticated ? (
                   <>
-                    <Link href="/orders" className="block py-3 text-white hover:text-yellow-300 tracking-wider">My Orders</Link>
+                    <button onClick={() => handleNavigation('/orders')} className="block py-3 text-white hover:text-yellow-300 tracking-wider">My Orders</button>
                     <button onClick={handleLogout} className="py-3 text-lg text-white hover:text-yellow-300 tracking-wider flex justify-between items-center">
                       Logout <LogOut className="ml-2 w-4" />
                     </button>
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="py-3 text-white hover:text-yellow-300 tracking-wider flex justify-between items-center">
+                    <button onClick={() => handleNavigation('/login')} className="py-3 text-white hover:text-yellow-300 tracking-wider flex justify-between items-center">
                       Login <LucideLogIn className="ml-2 w-4" />
-                    </Link>
-                    <Link href="/signup" className="py-3 text-white hover:text-yellow-300 tracking-wider flex justify-between items-center">
+                    </button>
+                    <button onClick={() => handleNavigation('/signup')} className="py-3 text-white hover:text-yellow-300 tracking-wider flex justify-between items-center">
                       Signup <UserPlusIcon className="ml-2 w-4" />
-                    </Link>
+                    </button>
                   </>
                 )}
               </div>
@@ -121,7 +123,7 @@ const Navbar = () => {
 
           {/* Cart Icon with Badge */}
           <div className="relative">
-            <Link href="/cart" className="text-white hover:text-black">
+            <button onClick={() => handleNavigation('/cart')} className="text-white hover:text-black">
               <ShoppingCart className="w-6 h-6" />
               {/* Badge */}
               {cartItems > 0 && (
@@ -129,13 +131,12 @@ const Navbar = () => {
                   {cartItems}
                 </span>
               )}
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden" ref={menuRef}>
             <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
-              {/* Toggle between Menu and Cross icon */}
               {isOpen ? <X className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
             </button>
           </div>
@@ -144,11 +145,11 @@ const Navbar = () => {
 
       {/* Mobile Menu (Dropdown) */}
       {isOpen && (
-        <div className="md:hidden uppercase mt-10 font-bold text-md ml-7">
-          <Link href="/" className="block text-white hover:text-black px-4 py-2 tracking-wider">Home</Link>
-          <Link href="/menu" className="block text-white hover:text-black px-4 py-2 tracking-wider">Menu</Link>
-          <Link href="/about" className="block text-white hover:text-black px-4 py-2 tracking-wider">About us</Link>
-          <Link href="/contact" className="block text-white hover:text-black px-4 py-2 tracking-wider">Contact</Link>
+        <div className="md:hidden uppercase mt-10 font-bold text-md ml-7 z-50">
+          <button onClick={() => handleNavigation('/')} className="block text-white hover:text-black px-4 py-2 tracking-wider uppercase">Home</button>
+          <button onClick={() => handleNavigation('/menu')} className="block text-white hover:text-black px-4 py-2 tracking-wider uppercase">Menu</button>
+          <button onClick={() => handleNavigation('/about')} className="block text-white hover:text-black px-4 py-2 tracking-wider uppercase">About us</button>
+          <button onClick={() => handleNavigation('/contact')} className="block text-white hover:text-black px-4 py-2 tracking-wider uppercase">Contact</button>
         </div>
       )}
 

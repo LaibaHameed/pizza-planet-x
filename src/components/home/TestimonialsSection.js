@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, StarIcon } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 const testimonials = [
     {
@@ -30,7 +31,13 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+
+    const router = useRouter();
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNavigation = (path) => {
+        router.push(path);
+    };
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -83,10 +90,10 @@ const TestimonialsSection = () => {
                 </button>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-2 md:gap-6 w-full text-center">
-                <button className="max-w-60 bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-slate-950 hover:text-white">
+                <button onClick={() => handleNavigation('/menu')} className="max-w-60 bg-yellow-500 text-zinc-950 font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-slate-950 hover:text-white">
                     Order Online
                 </button>
-                <button className="max-w-60 bg-slate-950 text-white font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
+                <button onClick={() => handleNavigation('/menu')} className="max-w-60 bg-slate-950 text-white font-bold tracking-wide uppercase py-4 px-6 transition-colors duration-300 hover:bg-yellow-500 hover:text-zinc-950">
                     Drive Through
                 </button>
             </div>
